@@ -1,10 +1,11 @@
 
 import java.util.Random;
+import java.util.concurrent.ForkJoinPool;
 
 
-//1.求最值 2.求和 3.交换数据 4.打乱数据
+//1.求最值 2.求和 3.交换数据 4.排序
 public class arrayStu01 {
-    public static final int len = 9;
+    public static final int len = 10;
     public static void main(String[] args) {
         //定义一个数组
         int []array = new int[len];
@@ -27,7 +28,13 @@ public class arrayStu01 {
         //交换数据
         System.out.print("倒置后的数组是：");
         reverse(array);
+        //排序
+        System.out.print("排序后的数组是：");
+        oder(array);
     }
+
+
+
     //遍历数组
     public static  void traverse(int[] array){
         for(int item:array){
@@ -74,6 +81,28 @@ public class arrayStu01 {
         }
         traverse(array);
         System.out.println("\n");
+    }
+    //排序(选择)
+    private static void oder(int[] array) {
+        int k ,temp;
+        for (int i = 0; i < len-1; i++)
+        {
+            k = i;
+            for (int j = i+1; j < len; j++) {
+                if(array[j]<array[k]){
+                    k = j;
+                }
+
+            }
+            if (k!=i) {
+                temp = array[k];
+                array[k] = array[i];
+                array[i] = temp;
+            }
+
+        }
+       traverse(array);
+
     }
 
 }
